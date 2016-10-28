@@ -24,9 +24,6 @@ Route::get('/cart', function () {
 Route::get('/loginhome',function() {
     return view('loginhome');
 });
-Route::get('/sozai',function() {
-    return view('sozai');
-});
 
 /*
 Route::get('/detail', function () {
