@@ -23,7 +23,7 @@ class CartService
         session()->forget("items.$index"); //sessionから選んだ商品を削除。例えば$items[0]の削除は items.0 と指定できる。
     }
     public function getItems(){
-        $items = session()->get("items",[]); //セッションデータを取得、nullの場合は空の配列
+        $items = session()->get("items",[]); //セッションデータを取得、nullの場合は空の配列。
         return $items;
     }
 }
