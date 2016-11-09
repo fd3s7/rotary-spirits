@@ -25,11 +25,7 @@ Route::get('/loginhome',function() {
     return view('loginhome');
 });
 
-/*
-Route::get('/detail', function () {
-    return view('detail');
-});
-*/
+
 
 Route::get('/', function (Request $request) {
     $page = DB::table('page')->get();
@@ -45,6 +41,36 @@ Route::get('/detail', function(Request $request){
    ]);
 });
 
+
+// カートに入れる
+Route::post('/cart', function(Request $request){
+    $id = $request->get("id"); //idを取得
+    $cart = new \App\Service\CartService();
+    $cart->addItem($id);
+    return redirect("/cart"); //カートのページへリダイレクト
+});
+// カートの中を一覧表示
+Route::get('/cart', function(){
+    $cart = new \App\Service\CartService();
+    return view("cart", [ //データを渡してビューを表示
+        "items" => $cart->getItems()
+    ]);
+});
+// 商品を削除
+Route::get('/delete', function(Request $request){
+    $index = $request->get("index"); //削除した商品のindexを取得
+    $cart = new \App\Service\CartService();
+    $cart->removeItem($index);
+    return redirect("/cart");
+});
+// カートを空にする
+Route::get('/delete/all', function(){
+    $cart = new \App\Service\CartService();
+    $cart->clear();
+    return redirect("/cart"); //カートのページへリダイレクト
+});
+
+/*
 // カートに入れる
 Route::post('/cart', function(Request $request){
     $id = $request->get("id"); //idを取得
@@ -72,6 +98,7 @@ Route::get('/delete/all', function(){
     session()->flush(); //sessionの全データを削除
     return redirect("/cart"); //カートのページへリダイレクト
 });
+*/
 
 Auth::routes();
 
