@@ -2,6 +2,12 @@
 
 return [
 
+  //gmail送信
+  'host' => 'smtp.gmail.com',
+  'from' => array('address' => 'B5021@oic.jp', 'name' => 'RE専門店「rotary spirits」'),
+  'username' => 'B5021@oic.jp',
+  'password' => 'Sn@0211213',
+
     /*
     |--------------------------------------------------------------------------
     | Mail Driver
