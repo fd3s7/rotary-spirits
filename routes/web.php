@@ -24,6 +24,19 @@ Route::get('/cart', function () {
 Route::get('/loginhome',function() {
     return view('loginhome');
 });
+Route::get('/logintest',function() {
+    return view('logintest');
+});
+Route::get('/rezi',function() {
+    return view('rezi');
+});
+
+//order
+Route::get('/contact','ContactController@index');
+Route::post('/contact','ContactController@send');
+
+
+Route::resource('users', 'UsersController'); //mailのcontrollerg
 
 
 
@@ -56,6 +69,21 @@ Route::get('/cart', function(){
         "items" => $cart->getItems()
     ]);
 });
+
+//reziの表示
+Route::get('/rezi', function(){
+    $items = session()->get('items');
+    $total = 0;
+    foreach($items as $item){
+      $prices = $item->price;
+      $total += $prices;
+    }
+    return view("rezi", compact('items','total'));
+});
+
+//カートに入っている商品の合計金額を表示
+
+
 // 商品を削除
 Route::get('/delete', function(Request $request){
     $index = $request->get("index"); //削除した商品のindexを取得
@@ -70,35 +98,6 @@ Route::get('/delete/all', function(){
     return redirect("/cart"); //カートのページへリダイレクト
 });
 
-/*
-// カートに入れる
-Route::post('/cart', function(Request $request){
-    $id = $request->get("id"); //idを取得
-    $item = DB::table('page')->where('id', $id)->first(); //idが一致するものをpageテーブルから検索、取得
-    $items = session()->get("items",[]); //セッションデータを取得
-    $items[] = $item; // 取得したデータにオブジェクトを保存
-    session()->put("items", $items); //取得したデータをsessionに保存
-    return redirect("/cart"); //リダイレクト
-});
-// カートの中を一覧表示
-Route::get('/cart', function(){
-    $items = session()->get("items",[]); //セッションデータを取得
-    return view("cart", [ //データを渡してビューを表示
-        "items" => $items
-    ]);
-});
-// 商品を削除
-Route::get('/delete', function(Request $request){
-    $index = $request->get("index"); //削除した商品のindexを取得
-    session()->forget("items.$index"); //sessionから選んだ商品を削除
-    return redirect("/cart");
-});
-// カートを空にする
-Route::get('/delete/all', function(){
-    session()->flush(); //sessionの全データを削除
-    return redirect("/cart"); //カートのページへリダイレクト
-});
-*/
 
 Auth::routes();
 

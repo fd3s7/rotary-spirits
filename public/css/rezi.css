@@ -1,0 +1,25 @@
+h1{
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.main_cart{
+  margin-top: 60px;
+}
+.orderbutton{
+  width: 150px;
+  height: 48px;
+  font-size: 16px;
+  margin-left: 20px;
+  letter-spacing: 4px;
+  background-color: #3ba666;
+  border-radius: 4px;
+  border: 0;
+  color: #ffffff !important;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  height: 2.85em;
+  line-height: 2.8em;
+  padding: 0 2em;
+  text-align: center;
+}

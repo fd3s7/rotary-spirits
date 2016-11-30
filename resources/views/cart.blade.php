@@ -91,7 +91,7 @@
     <div class="main_cart">
 							<ul class="actions">
 								<li><a href="rotary" class="button alt">ショッピングを続ける</a></li>
-								<li><a href="#" class="button">レジへ進む</a></li>
+								<li><a href="/rezi" class="button">レジへ進む</a></li>
 							</ul>
     </div>
   </div>
