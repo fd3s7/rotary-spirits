@@ -32,9 +32,8 @@ Route::get('/rezi',function() {
 });
 
 //order
-Route::get('/contact','ContactController@index');
-Route::post('/contact','ContactController@send');
-
+Route::get('/order','ContactController@index');
+Route::post('/order','ContactController@send');
 
 Route::resource('users', 'UsersController'); //mailのcontrollerg
 
@@ -98,6 +97,10 @@ Route::get('/delete/all', function(){
     return redirect("/cart"); //カートのページへリダイレクト
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
 
 Auth::routes();
 

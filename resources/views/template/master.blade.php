@@ -23,22 +23,27 @@
 	<body class="landing">
 
 		<!-- Header -->
-			<header id="header">
-				<h1><a href="rotary">Rotary spirits</a></h1>
-				<nav id="nav">
-					<ul>
+		<header id="header">
+			<h1><a href="rotary">Rotary spirits</a></h1>
+			<nav id="nav">
+				<ul>
+					@if (Auth::guest())
 						<li><a href="rotary">Home</a></li>
-						<li><a href="democar">democar</a></li>
-						<li><a href="cart">cart</a></li>
-						<li><a href="login">login</a></li>
-					</ul>
+						<li><a href="cart">Cart</a></li>
+						<li><a href="/login">Login</a></li>
+						<li><a href="/register">Register</a></li>
+					@else
+						<li><a href="rotary">Home</a></li>
+						<li><a href="cart">Cart</a></li>
+						<li>{{ Auth::user()->name }}</li>
+						<li><a href="/logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
+						<li><form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form></li>
+					@endif
+				 </ul>
+			</nav>
+		</header>
 
-				</nav>
-			</header>
-
-				<div class="container">
-            @yield('main')
-				</div>
+    @yield('main')
 
 
 		<!-- Footer -->
@@ -59,7 +64,7 @@
 								</li>
 								<li>
 									<h3>Mail</h3>
-									<a href="#">someone@untitled.tld</a>
+									<a href="#">ecshop.rotaryspirits@gmail.com</a>
 								</li>
 								<li>
 									<h3>Phone</h3>
