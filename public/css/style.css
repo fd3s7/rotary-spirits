@@ -484,7 +484,16 @@
 		/*	.image.fit img {
 				width: 100%;
 			}
-*/
+		*/
+
+		.imagebox{
+			width: 100%;
+			text-align: center;
+			margin-top: 50px;
+		}
+
+		.imagebox img{
+		}
 
 
 /* List */
@@ -1103,7 +1112,7 @@
 		margin-top: 20%;
 	}
 	.comment{
-		margin-top: 100px;
+		margin-top: 70px;
 	}
 	.image fit_center{
 		display: block;

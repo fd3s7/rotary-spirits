@@ -22,7 +22,7 @@
           <th>
             商品名
           </th>
-          <th>
+          <th class="kakaku">
             価格
           </th>
           <th>
@@ -37,8 +37,8 @@
             <td>
               {{ $item->name }}
             </td>
-            <td>
-              {{ $item->price }} ¥
+            <td class="kakaku">
+              ¥ {{ $item->price }}
             </td>
             <td>
               {{ $item->description }}
@@ -58,13 +58,13 @@
     @endif
 
     <div class="sum-money">
-      <h1>
-        {{ $total }}
+      <h1 class="sum-title">
+        合計金額 : {{ $total }} 円
       </h1>
     </div>
 
     <div class="main_cart">
-      <form action="/contact" method="post">
+      <form action="/order" method="post">
         <a href="/cart" class="button alt">カートに戻る</a>
         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
         <button type="submit" class="orderbutton">注文確定</button>

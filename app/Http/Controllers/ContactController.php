@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use Mail;
-use App\Mail\Contacted;
+use App\Mail\Ordered;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
@@ -15,7 +17,7 @@ class ContactController extends Controller
 
     public function index() {
 
-      return view('contact.index');
+      return view('rezi');
     }
 
     /**
@@ -25,9 +27,19 @@ class ContactController extends Controller
     */
    public function send(Request $request)
    {
-       Mail::to('B5021@oic.jp')->send(new Contacted($request));
+       $user = Auth::user();
+       $userId = $user->id;
+       $items = session()->get('items');
+       $total = 0;
+       foreach($items as $item){
+         $prices = $item->price;
+         $total += $prices;
+       }
+       Mail::send('mail.ordermail', compact('user','items','total'), function($message) use($user,$items,$total) {
+       $message->to($user->email)->subject('注文確認');
        session()->flush(); //sessionの全データを削除
-       return redirect('/order_complete');
+       return view('/order_complete');
+       });
    }
 
 }

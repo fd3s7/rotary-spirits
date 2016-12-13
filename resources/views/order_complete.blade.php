@@ -3,11 +3,10 @@
 @section('title', '注文確定')
 
 @section('css')
-<link rel="stylesheet" href="/css/rezi.css">
+<link rel="stylesheet" href="/css/ordercomplete.css">
 @endsection
 
 @section('main')
-<!--- main --->
 
 <section id="main" class="wrapper">
   <div class="container">
