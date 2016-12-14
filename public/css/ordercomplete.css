@@ -2,3 +2,18 @@ h1{
   text-align: center;
   margin: 0 auto;
 }
+
+.thanks{
+  font-size: 30px;
+  margin-top: 100px;
+  letter-spacing: 5px;
+}
+
+.main_cart{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.button {
+  letter-spacing: 2px;
+}

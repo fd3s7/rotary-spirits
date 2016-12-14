@@ -112,7 +112,7 @@
                             <label for="address3" class="col-md-4 control-label">Address3</label>
 
                             <div class="col-md-6">
-                                <input id="address3" type="text" class="form-control" name="address3" required>
+                                <input id="address3" type="text" class="form-control" name="address3">
 
                                 @if ($errors->has('address3'))
                                     <span class="help-block">

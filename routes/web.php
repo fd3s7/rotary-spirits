@@ -34,7 +34,7 @@ Route::get('/rezi',function() {
 //order
 Route::get('/order','ContactController@index');
 Route::post('/order','ContactController@send');
-
+Route::get('/order/complete','ContactController@complete');
 Route::resource('users', 'UsersController'); //mailのcontrollerg
 
 

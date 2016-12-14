@@ -27,6 +27,7 @@ class ContactController extends Controller
     */
    public function send(Request $request)
    {
+
        $user = Auth::user();
        $userId = $user->id;
        $items = session()->get('items');
@@ -37,9 +38,15 @@ class ContactController extends Controller
        }
        Mail::send('mail.ordermail', compact('user','items','total'), function($message) use($user,$items,$total) {
        $message->to($user->email)->subject('注文確認');
-       session()->flush(); //sessionの全データを削除
-       return view('/order_complete');
+       session()->forget('items'); //sessionの全データを削除
+
        });
+       return redirect('/order/complete');
+   }
+
+   public function complete()
+   {
+     return view('/order_complete');
    }
 
 }

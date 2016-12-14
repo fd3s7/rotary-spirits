@@ -7,15 +7,13 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-xlarge.css" />
-		</noscript>
+		<script src="/js/jquery.min.js"></script>
+		<script src="/js/skel.min.js"></script>
+		<script src="/js/skel-layers.min.js"></script>
+		<script src="/js/init.js"></script>
+		<link rel="stylesheet" href="/css/skel.css" />
+		<link rel="stylesheet" href="/css/style.css" />
+		<link rel="stylesheet" href="/css/style-xlarge.css" />
     @yield('css')
     @yield('plug')
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
@@ -24,17 +22,17 @@
 
 		<!-- Header -->
 		<header id="header">
-			<h1><a href="rotary">Rotary spirits</a></h1>
+			<h1><a href="/rotary">Rotary spirits</a></h1>
 			<nav id="nav">
 				<ul>
 					@if (Auth::guest())
-						<li><a href="rotary">Home</a></li>
-						<li><a href="cart">Cart</a></li>
+						<li><a href="/rotary">Home</a></li>
+						<li><a href="/cart">Cart</a></li>
 						<li><a href="/login">Login</a></li>
 						<li><a href="/register">Register</a></li>
 					@else
-						<li><a href="rotary">Home</a></li>
-						<li><a href="cart">Cart</a></li>
+						<li><a href="/rotary">Home</a></li>
+						<li><a href="/cart">Cart</a></li>
 						<li>{{ Auth::user()->name }}</li>
 						<li><a href="/logout" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
 						<li><form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form></li>
