@@ -21,12 +21,6 @@ Route::get('/democar', function () {
 Route::get('/cart', function () {
     return view('cart');
 });
-Route::get('/loginhome',function() {
-    return view('loginhome');
-});
-Route::get('/logintest',function() {
-    return view('logintest');
-});
 Route::get('/rezi',function() {
     return view('rezi');
 });
@@ -38,13 +32,15 @@ Route::get('/order/complete','ContactController@complete');
 Route::resource('users', 'UsersController'); //mailのcontrollerg
 
 
-
+//page
 Route::get('/', function (Request $request) {
     $page = DB::table('page')->get();
    return view('rotary', [
        "page" => $page
    ]);
 });
+
+//商品詳細ページ
 Route::get('/detail', function(Request $request){
    $id = $request->get("id");
    $page = DB::table('page')->where('id', $id)->first();
@@ -61,6 +57,7 @@ Route::post('/cart', function(Request $request){
     $cart->addItem($id);
     return redirect("/cart"); //カートのページへリダイレクト
 });
+
 // カートの中を一覧表示
 Route::get('/cart', function(){
     $cart = new \App\Service\CartService();
@@ -69,6 +66,7 @@ Route::get('/cart', function(){
     ]);
 });
 
+//カートに入っている商品の合計金額を表示
 //reziの表示
 Route::get('/rezi', function(){
     $items = session()->get('items');
@@ -80,7 +78,6 @@ Route::get('/rezi', function(){
     return view("rezi", compact('items','total'));
 });
 
-//カートに入っている商品の合計金額を表示
 
 
 // 商品を削除
@@ -97,11 +94,7 @@ Route::get('/delete/all', function(){
     return redirect("/cart"); //カートのページへリダイレクト
 });
 
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index');
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index');

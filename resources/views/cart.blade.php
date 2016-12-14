@@ -55,20 +55,26 @@
           @endforeach
         </tbody>
       </table>
+      <div class="main_cart">
+  							<ul class="actions">
+  								<li><a href="rotary" class="button alt">ショッピングを続ける</a></li>
+  								<li><a href="/rezi" class="button">レジへ進む</a></li>
+  							</ul>
+      </div>
       <!---商品が入っていないとき--->
       @else
       <p style="margin-top:5%;">
         カートに商品は入っていません。
       </p>
+
+      <div class="main_cart">
+  							<ul class="actions">
+  								<li><a href="rotary" class="button alt">ショッピングを続ける</a></li>
+  							</ul>
+      </div>
       @endif
     </div>
 
-    <div class="main_cart">
-							<ul class="actions">
-								<li><a href="rotary" class="button alt">ショッピングを続ける</a></li>
-								<li><a href="/rezi" class="button">レジへ進む</a></li>
-							</ul>
-    </div>
   </div>
 </section>
 @endsection
