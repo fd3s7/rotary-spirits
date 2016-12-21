@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Service\TotalPriceService;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +22,6 @@ Route::get('/democar', function () {
 });
 Route::get('/cart', function () {
     return view('cart');
-});
-Route::get('/rezi',function() {
-    return view('rezi');
 });
 
 //order
@@ -68,16 +67,15 @@ Route::get('/cart', function(){
 
 //カートに入っている商品の合計金額を表示
 //reziの表示
+Route::group(['middleware' => 'auth'], function () {
+
 Route::get('/rezi', function(){
     $items = session()->get('items');
-    $total = 0;
-    foreach($items as $item){
-      $prices = $item->price;
-      $total += $prices;
-    }
+    $totals = new TotalPriceService();
+    $total = $totals -> total();
     return view("rezi", compact('items','total'));
 });
-
+});
 
 
 // 商品を削除

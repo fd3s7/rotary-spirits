@@ -43,7 +43,7 @@
                 {{ $item->name }}
               </td>
               <td class="kakaku">
-                {{ $item->price }} ¥
+                ¥ {{ $item->price }}
               </td>
               <td>
                 {{ $item->description }}

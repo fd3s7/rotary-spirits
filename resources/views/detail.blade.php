@@ -14,7 +14,7 @@
             </div>
             <div class="container">
               <div class="comment">
-                <h2 class="comment_detail">{{  $page->name }}<br>{{$page->price}}¥</h2>
+                <h2 class="comment_detail">{{  $page->name }}<br>¥ {{$page->price}}</h2>
                 <p class="p_comment_detail">{{ $page->description }}</p>
               </div>
                 <!-- cartに入れる -->

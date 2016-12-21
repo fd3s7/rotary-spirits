@@ -43,9 +43,6 @@
             <td>
               {{ $item->description }}
             </td>
-            <td>
-              <a href="/delete?index={{ $index }}" class="button">削除</a>
-            </td>
           </tr>
         @endforeach
       </tbody>
